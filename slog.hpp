@@ -21,7 +21,6 @@ class Logger {
             if (get_logfile_size() > MAX_FILESIZE) {
                 truncate_logfile();
             }
-            _logfile << message << std::endl;
             auto now = std::chrono::system_clock::now();
             std::time_t now_time = std::chrono::system_clock::to_time_t(now);
             std::tm* local_time = std::localtime(&now_time);
@@ -30,6 +29,7 @@ class Logger {
             std::strftime(buffer, 80, "%Y-%m-%d %H:%M:%S", local_time);
             std::string log_message = "[" + std::string(buffer) + "]: " + message;
             std::cout << "[LOG]" << log_message << std::endl;
+            _logfile << log_message << std::endl;
 #endif
         }
 
