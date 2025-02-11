@@ -66,3 +66,5 @@ class Logger {
 };
 
 } // namespace slog
+
+#define slog(message) slog::Logger::get_instance().log(message)
